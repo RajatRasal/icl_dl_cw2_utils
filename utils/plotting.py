@@ -9,7 +9,7 @@ def plot_tsne(tsne_xy, dataloader, num_points=1000, darkmode=True):
     # js_code = r'document.documentElement.getAttribute("theme");'
     # display(IPython.display.Javascript(js_code))
 
-    images, labels = zip(*[(x[0].numpy()[0,:,:,None], x[1]) for x in dataloader.dataset])
+    images, labels = zip(*[(x[0].numpy()[0,:,:,None], x[1].numpy()) for x in dataloader.dataset])
 
     num_points = min(num_points, len(labels))
     data = pd.DataFrame({'x':tsne_xy[:, 0], 'y':tsne_xy[:, 1], 'label':labels,
